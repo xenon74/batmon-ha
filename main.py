@@ -282,7 +282,7 @@ async def main():
         dt_max_seconds=max(60. * 10, sample_period * 2),
         expire_after_seconds=expire_values_after and max(expire_values_after, int(sample_period * 2 + .5),
                                                          int(publish_period * 2 + .5)),
-        invert_current=ic,
+        invert_current=dev_args[bms.name].get('invert_current', ic),
         meter_state=meter_states.get(bms.name),
         publish_period=publish_period,
         algorithms=dev_args[bms.name].get('algorithm') and dev_args[bms.name].get('algorithm', '').split(";"),
